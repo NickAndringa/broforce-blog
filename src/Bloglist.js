@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const Bloglist = ({blogs, title, handleDelete}) => {
+const Bloglist = ({blogs, title}) => {
 
     return(
         <div className="blog-list">
@@ -9,7 +9,6 @@ const Bloglist = ({blogs, title, handleDelete}) => {
                 <div className="blog-preview bg-stone-300 p-5 m-2 rounded-bl-3xl rounded-tr-3xl hover:bg-stone-400 transition-all hover:py-10" key={blog.id}>
                     <h2 className= "text-2xl">{blog.title}</h2>
                     <p>Written by { blog.author }</p>
-                    <button onClick={() => handleDelete(blog.id)}>delete blog</button>
                 </div>
             ))}
         </div>
