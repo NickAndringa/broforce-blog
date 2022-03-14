@@ -1,5 +1,5 @@
 import './styles/_home.sass';
-import { useState} from "react";
+import {useEffect, useState} from "react";
 import Bloglist from "./Bloglist";
 
 const Home = () => {
@@ -9,15 +9,24 @@ const Home = () => {
         {title: 'Web dev top tips', body: 'Lorem ipsum...',author: 'Yoshi', id: 3}
     ]);
 
+    const [name, setName] = useState('Yoshi');
+
     const handleDelete = (id) => {
         const newBlogs = blogs.filter(blog => blog.id !== id)
         setBlogs(newBlogs)
     }
 
+    useEffect(() => {
+        return () => {
+        };
+    }, [name]);
+
+
     return(
         <div className= 'Home' >
             <Bloglist blogs={blogs} title={'All blogs'} handleDelete={handleDelete}/>
-            <Bloglist blogs={blogs.filter((blog) => blog.author === 'Nick' )} title={"Nick's blogs"} />
+            <Bloglist blogs={blogs.filter((blog) => blog.author === name )} title={name +"'s  blogs"} />
+            <button onClick={()=> setName('Nick')}>change name</button>
         </div>
 
     );
